@@ -12,7 +12,7 @@ public abstract class TopCard extends Card {
     }
 
     /**
-     * Returns position of first valid bottom.
+     * Returns position of first valid bottom card.
      *
      * Top cards must be placed on a bottom card of the same CardClass.
      * If there are no corresponding bottom cards the move is invalid and -1 is returned.

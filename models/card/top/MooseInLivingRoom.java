@@ -8,6 +8,7 @@ public class MooseInLivingRoom extends TopCard {
         super(CardClass.LIVINGROOM, "asdf");
     }
 
+
     @Override
     public boolean isDefensive() {
         return true;
