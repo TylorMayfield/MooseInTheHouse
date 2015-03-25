@@ -57,4 +57,8 @@ public class Bot extends Player {
         // No moves left. End turn.
         return null;
     }
+
+    public int[] getPriorities(Player[] players) {
+        return behavior.organizeThreats(players);
+    }
 }

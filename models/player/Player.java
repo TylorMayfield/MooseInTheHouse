@@ -29,8 +29,21 @@ public abstract class Player {
     }
 
     public void setCardInHouse(int index, Card card) {
-        // TODO add to points if necessary
-        house.set(index, card);
+        if ( ! card.isBottomCard() && ! card.isDefensive()) {
+            points++;
+        }
+
+        if (index >= house.size())
+            house.add(card);
+        else
+            house.set(index, card);
+    }
+
+    /**
+     *  FOR TESTING PURPOSES ONLY
+     */
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public int getID() {

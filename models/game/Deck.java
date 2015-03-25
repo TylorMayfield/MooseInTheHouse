@@ -18,7 +18,7 @@ public class Deck {
     List<Card> cards = new ArrayList<Card>();
     List<Card> discard = new ArrayList<Card>();
 
-    Deck(){}//end Deck
+    public Deck(){}//end Deck
 
     /*
      * Shuffles the deck for the game
