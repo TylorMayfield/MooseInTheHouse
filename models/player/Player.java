@@ -59,6 +59,6 @@ public abstract class Player {
     }
 
     public Card[] getHouse() {
-        return (Card[]) house.toArray();
+        return house.toArray(new Card[house.size()]);
     }
 }
