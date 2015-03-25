@@ -24,16 +24,16 @@ public class Bot extends Player {
     }
 
     // TODO improve structure for modular defensive and offensive behavior
-    // TODO test
     @Override
     public Move makeMove(Player[] players) {
 
         // Defensive
         for (int i = 0; i < hand.size(); i++) {
             Card card = hand.get(i);
-            if (card.isDefensive() && card.validate(getHouse()) > -1) {
+            int position = card.validate(getHouse());
+            if (card.isDefensive() && position > -1) {
                 hand.remove(i);
-                return new Move(card, getID(), getID());
+                return new Move(card, getID(), getID(), position);
             }
         }
 
@@ -47,9 +47,10 @@ public class Bot extends Player {
 
             for (int j = 0; j < hand.size(); j++) {
                 Card card = hand.get(j);
-                if ( ! card.isDefensive() && card.validate(target.getHouse()) > -1) {
+                int position = card.validate(target.getHouse());
+                if ( ! card.isDefensive() && position > -1) {
                     hand.remove(j);
-                    return new Move(card, getID(), target.getID());
+                    return new Move(card, getID(), target.getID(), position);
                 }
             }
         }

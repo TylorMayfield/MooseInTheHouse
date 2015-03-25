@@ -9,11 +9,13 @@ public class Move {
     private Card card;
     private int cardPlayerID;
     private int receivingPlayer;
+    private int housePosition;
 
-    Move (Card card, int cardPlayerID, int receivingPlayer) {
+    Move (Card card, int cardPlayerID, int receivingPlayer, int housePosition) {
         this.card = card;
         this.cardPlayerID = cardPlayerID;
         this.receivingPlayer = receivingPlayer;
+        this.housePosition = housePosition;
     }
 
     public Card getCard() {
@@ -24,7 +26,11 @@ public class Move {
         return cardPlayerID;
     }
 
-    public int getRecievingPlayer() {
+    public int getReceivingPlayer() {
         return receivingPlayer;
+    }
+
+    public int getHousePosition() {
+        return housePosition;
     }
 }

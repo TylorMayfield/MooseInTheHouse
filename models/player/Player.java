@@ -39,6 +39,10 @@ public abstract class Player {
             house.set(index, card);
     }
 
+    public void setCardInHouse(Move move) {
+        setCardInHouse(move.getHousePosition(), move.getCard());
+    }
+
     /**
      *  FOR TESTING PURPOSES ONLY
      */
