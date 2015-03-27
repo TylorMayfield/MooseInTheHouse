@@ -1,13 +1,15 @@
-package models.game;
-
 /**
  * Created By Software Engineering Team 9
  * UVM
- * Last Updated March 13th, 2015
+ * Last Updated March 22nd, 2015
  * First Created March 13th, 2015
  */
 
+package models.game;
+
 import models.card.Card;
+import models.card.bottom.*;
+import models.card.top.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +20,55 @@ public class Deck {
     List<Card> cards = new ArrayList<Card>();
     List<Card> discard = new ArrayList<Card>();
 
-    public Deck(){}//end Deck
+    /*
+     * Default constructor builds a deck containing,
+     * 20 Empty Room cards (5 each of Kitchen, Bathroom, Living Room
+	 * and Bedroom)
+	 * 20 Moose in the Room cards (same as above, but with Moose)
+	 * 10 There’s a Moose in the House cards
+	 * 5 Door cards
+	 * 3 Moose Trap cards
+     */
+    Deck(){
+        for(int i = 1 ; i <= 5 ; i++){                                  //Creates all cards needed that loop are devisable by 5
+            cards.add(new EmptyBathroom());
+
+            EmptyLivingRoom emptyLivingRoom = new EmptyLivingRoom();
+            cards.add(emptyLivingRoom);
+
+            EmptyBedroom emptyBedRoom = new EmptyBedroom();
+            cards.add(emptyBedRoom);
+
+            EmptyKitchen emptyKitchen = new EmptyKitchen();
+            cards.add(emptyKitchen);
+
+            MooseInBathroom mooseinBathroom = new MooseInBathroom();           //Moose in the Room Cards
+            cards.add(mooseinBathroom);
+
+            MooseInLivingRoom mooseinLivingRoom = new MooseInLivingRoom();
+            cards.add(mooseinLivingRoom);
+
+            MooseInBedroom mooseinBedRoom = new MooseInBedroom();
+            cards.add(mooseinBedRoom);
+
+            MooseInKitchen mooseinKitchen = new MooseInKitchen();
+            cards.add(mooseinKitchen);
+
+            Moose moose = new Moose();                               //creates two moose cards per loop though
+            cards.add(moose);
+            cards.add(moose);
+
+            Door door = new Door();                                 //Door cards
+            cards.add(door);
+        }//end for i <= 5
+
+        for(int i = 1 ; i <= 3 ; i++){                                  //seperate loop for Moose Traps beacuse there is only 3
+            MooseBait mooseBait = new MooseBait();
+            cards.add(mooseBait);
+        }//end for i <= 3
+
+        shuffle();
+    } //end for i <= 5}//end Deck
 
     /*
      * Shuffles the deck for the game
@@ -31,7 +81,7 @@ public class Deck {
      * deals the ammount of cards needed for a turn
      * @return cardsDelt
      */
-    public Card[] deal(int count){
+    public Card[] deal(int count) {
         Card[] cardsDelt = new Card[count];  //makes an array of size count
 
         for(int i = 0; i <= (count-1) ; i++){
